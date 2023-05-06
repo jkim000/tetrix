@@ -1,2 +1,3 @@
-export const COLUMNS = 10;
-export const ROWS = 20;
+export const COLUMN_SIZE = 10;
+
+export const ROW_SIZE = 20;
