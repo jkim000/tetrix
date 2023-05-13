@@ -1,4 +1,6 @@
 import { ROW_SIZE, COLUMN_SIZE } from "../utils/constants";
+const COLUMN_SIZE = 10;
+const ROW_SIZE = 20;
 
 export const Gameboard = () => {
     const board: number[][] = new Array(ROW_SIZE); // board[rows][cols]
