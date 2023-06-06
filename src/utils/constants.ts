@@ -1,5 +1,5 @@
-const COLUMN_SIZE = 10;
-const ROW_SIZE = 20;
+export const COLUMN_SIZE = 10;
+export const ROW_SIZE = 20;
 
 export const createBoard = () => {
     return Array.from(Array(ROW_SIZE), () =>
