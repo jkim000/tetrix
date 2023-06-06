@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Gameboard } from "./components/Gameboard";
-import { GameOver } from "./components/GameOver";
+// import { GameOver } from "./components/GameOver";
 import { Scoreboard } from "./components/Scoreboard";
 import { NextPiece } from "./components/NextPiece";
 import { SavedPiece } from "./components/SavedPiece";
@@ -34,14 +34,18 @@ function App() {
         setLevel(newLevel);
     };
 
+    const onStartGameClick = () => {
+        createBoard();
+    }
+
     return (
-        <div className='w-screen h-screen'>
-            <h1 className='text-center'>TETRIX</h1>
-            <div className='flex flex-row justify-between p-24 border border-red-500'>
-                <div className='border border-blue-400'>
+        <div className='w-screen h-screen py-12'>
+            <h1 className='text-center text-4xl'>TETRIX</h1>
+            <div className='flex flex-row justify-between px-20 py-12 border border-red-500'>
+                <div className='w-32 h-32 border border-blue-400'>
                     <SavedPiece />
                 </div>
-                <div className='max-w-4xl border border-green-500'>
+                <div className="m-auto max-w-lg">
                     <Gameboard
                         stage={createBoard()}
                         gameOver={gameOver}
@@ -51,14 +55,14 @@ function App() {
                         onLevelUpdate={handleLevelUpdate}
                     />
                 </div>
-                <div className='flex flex-col border border-purple-600'>
+                <div className='w-48 flex flex-col border border-purple-600'>
                     <NextPiece />
                     <Scoreboard
                         score={score}
                         level={level}
                         linesRecentlyCleared={linesCleared}
                     />
-                    {gameOver && <button onClick={() => {}}>Start Game</button>}
+                    {gameOver && <button onClick={onStartGameClick}>Start Game</button>}
                 </div>
             </div>
         </div>
