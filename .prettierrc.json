@@ -1,5 +1,13 @@
 {
-    "tabWidth": 4,
-    "jsxSingleQuote": true,
-    "bracketSpacing": true
+  "tabWidth": 4,
+  "jsxSingleQuote": true,
+  "bracketSpacing": true,
+  "overrides": [
+    {
+      "files": "*.{js,jsx,ts,tsx,json}",
+      "options": {
+        "parser": "typescript"
+      }
+    }
+  ]
 }
