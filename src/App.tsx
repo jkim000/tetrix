@@ -4,7 +4,8 @@ import { Gameboard } from "./components/Gameboard";
 import { Scoreboard } from "./components/Scoreboard";
 import { NextPiece } from "./components/NextPiece";
 import { SavedPiece } from "./components/SavedPiece";
-import { createBoard } from "./utils/constants";
+import { createBoard } from "./utils/tetrisHelpers";
+import { StartButton } from "./components/StartButton";
 
 function App() {
     const [gameOver, setGameOver] = useState(false);
@@ -55,16 +56,17 @@ function App() {
                         onLevelUpdate={handleLevelUpdate}
                     />
                 </div>
-                <div className='w-48 flex flex-col border border-purple-600'>
+                <div className='w-48 flex flex-col gap-8 border border-purple-600'>
                     <NextPiece />
                     <Scoreboard
                         score={score}
                         level={level}
                         linesRecentlyCleared={linesCleared}
                     />
-                    {gameOver && (
+                    <StartButton callback={onStartGameClick} />
+                    {/* {gameOver && (
                         <button onClick={onStartGameClick}>Start Game</button>
-                    )}
+                    )} */}
                 </div>
             </main>
         </div>
