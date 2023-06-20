@@ -41,11 +41,11 @@ function App() {
     return (
         <div className='w-screen h-screen py-12'>
             <h1 className='text-center text-4xl'>TETRIX</h1>
-            <div className='flex flex-row justify-between px-20 py-12 border border-red-500'>
+            <main className='flex flex-row justify-between items-start gap-12 w-full h-full px-12 py-12 border border-red-500'>
                 <div className='w-32 h-32 border border-blue-400'>
                     <SavedPiece />
                 </div>
-                <div className="m-auto max-w-lg">
+                <div className='min-w-[350px] w-[350px] h-[700px]'>
                     <Gameboard
                         stage={createBoard()}
                         gameOver={gameOver}

@@ -1,5 +1,5 @@
 import { Cell } from "./Cell";
-import './styles/GameboardStyles.css'
+import "./styles/GameboardStyles.css";
 
 interface GameboardProps {
     stage: string[][][];
@@ -27,15 +27,12 @@ export const Gameboard = ({
         onLevelUpdate
     );
 
-    /**
-     * NOTE:
-     * type should equal type={cell[0]} when done with development
-     */
-
     return (
-        <div className="gameboardGrid">
+        <div className='gameboard-container'>
             {stage.map((row, rowIndex) =>
-                row.map((cell, colIndex) => <Cell key={`${rowIndex}-${colIndex}`} type='J' />)
+                row.map((cell, colIndex) => (
+                    <Cell key={`${rowIndex}-${colIndex}`} type={cell[0]} />
+                ))
             )}
         </div>
     );

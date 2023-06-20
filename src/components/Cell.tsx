@@ -15,7 +15,7 @@ export const Cell = ({ type }: CellProps) => {
             className={classNames(
                 type !== "X" && `border-4 ${borderTLColor} ${borderBRColor}`,
                 cellColor,
-                "h-6 w-6 justify-center flex-none"
+                "w-auto justify-center flex-none"
             )}
         />
     );
