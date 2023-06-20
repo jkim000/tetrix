@@ -36,7 +36,7 @@ function App() {
 
     const onStartGameClick = () => {
         createBoard();
-    }
+    };
 
     return (
         <div className='w-screen h-screen py-12'>
