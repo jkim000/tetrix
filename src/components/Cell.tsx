@@ -1,20 +1,22 @@
 import classNames from "classnames";
-import { TETROMINOS } from "../utils/tetromino";
+import { TETROMINOS } from "../utils/constants";
 
 interface CellProps {
     type: string;
 }
 
 export const Cell = ({ type }: CellProps) => {
-    const cellColor = TETROMINOS[type].color;
-    const borderTLColor = TETROMINOS[type].borderTLColor;
-    const borderBRColor = TETROMINOS[type].borderBRColor;
+    const cellColor: string = TETROMINOS[type].color;
+    const borderTLColor: string = TETROMINOS[type].borderTLColor;
+    const borderBRColor: string = TETROMINOS[type].borderBRColor;
 
     return (
         <div
             className={classNames(
-                type !== "X" && `border-4 ${borderTLColor} ${borderBRColor}`,
+                type !== "X" ? "border-4" : "border",
                 cellColor,
+                borderTLColor,
+                borderBRColor,
                 "w-auto justify-center flex-none"
             )}
         />
