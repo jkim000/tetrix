@@ -8,3 +8,5 @@ export type TetrominoType = {
 export type TetrominosType = {
     [block_type: string]: TetrominoType;
 };
+
+export type StageType = string[][][];

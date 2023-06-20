@@ -1,23 +1,24 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+
 import { Gameboard } from "./components/Gameboard";
-// import { GameOver } from "./components/GameOver";
 import { Scoreboard } from "./components/Scoreboard";
 import { NextPiece } from "./components/NextPiece";
 import { SavedPiece } from "./components/SavedPiece";
-import { createBoard } from "./utils/tetrisHelpers";
 import { StartButton } from "./components/StartButton";
+// import { GameOver } from "./components/GameOver";
+
+import { usePlayer } from "./hooks/usePlayer";
+import { useStage } from "./hooks/useStage";
 
 function App() {
-    const [gameOver, setGameOver] = useState(false);
+    const [gameOver, setGameOver] = useState(true);
     const [score, setScore] = useState(0);
     const [linesCleared, setLinesCleared] = useState(0);
     const [level, setLevel] = useState(1);
+    const [dropTime, setDropTime] = useState(null);
 
-    useEffect(() => {
-        if (gameOver) {
-            console.log("it's game over, do something");
-        }
-    }, [gameOver]);
+    const [player] = usePlayer();
+    const [stage, setStage] = useStage(player);
 
     const handleGameOver = () => {
         setGameOver(true);
@@ -36,7 +37,7 @@ function App() {
     };
 
     const onStartGameClick = () => {
-        createBoard();
+        console.log("should start a new game");
     };
 
     return (
@@ -48,7 +49,7 @@ function App() {
                 </div>
                 <div className='min-w-[350px] w-[350px] h-[700px]'>
                     <Gameboard
-                        stage={createBoard()}
+                        stage={stage}
                         gameOver={gameOver}
                         onGameOver={handleGameOver}
                         onScoreUpdate={handleScoreUpdate}
@@ -63,10 +64,7 @@ function App() {
                         level={level}
                         linesRecentlyCleared={linesCleared}
                     />
-                    <StartButton callback={onStartGameClick} />
-                    {/* {gameOver && (
-                        <button onClick={onStartGameClick}>Start Game</button>
-                    )} */}
+                    {gameOver && <StartButton onClick={onStartGameClick} />}
                 </div>
             </main>
         </div>

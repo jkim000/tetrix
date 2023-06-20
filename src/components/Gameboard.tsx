@@ -18,15 +18,6 @@ export const Gameboard = ({
     onLinesCleared,
     onLevelUpdate,
 }: GameboardProps) => {
-    console.log(
-        "Gameboard Props",
-        gameOver,
-        onGameOver,
-        onScoreUpdate,
-        onLinesCleared,
-        onLevelUpdate
-    );
-
     return (
         <div className='gameboard-container'>
             {stage.map((row, rowIndex) =>

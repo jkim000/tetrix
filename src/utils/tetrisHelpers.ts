@@ -1,7 +1,7 @@
 import { COLUMN_SIZE, ROW_SIZE, TETROMINOS } from "./constants";
-import { TetrominoType } from "./types";
+import { TetrominoType, StageType } from "./types";
 
-export const createBoard = () => {
+export const createBoard = (): StageType => {
     return Array.from(Array(ROW_SIZE), () =>
         new Array(COLUMN_SIZE).fill(["X", "clear"])
     );
