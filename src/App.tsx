@@ -39,9 +39,9 @@ function App() {
     };
 
     return (
-        <div className='w-screen h-screen py-12'>
+        <div className='w-screen h-screen py-12 font-mono'>
             <h1 className='text-center text-4xl'>TETRIX</h1>
-            <main className='flex flex-row justify-between items-start gap-12 w-full h-full px-12 py-12 border border-red-500'>
+            <main className='flex flex-row justify-between items-start gap-12 w-full h-full px-12 py-12'>
                 <div className='w-32 h-32 border border-blue-400'>
                     <SavedPiece />
                 </div>
@@ -62,9 +62,11 @@ function App() {
                         level={level}
                         linesRecentlyCleared={linesCleared}
                     />
-                    {gameOver && <button onClick={onStartGameClick}>Start Game</button>}
+                    {gameOver && (
+                        <button onClick={onStartGameClick}>Start Game</button>
+                    )}
                 </div>
-            </div>
+            </main>
         </div>
     );
 }
