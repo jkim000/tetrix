@@ -13,10 +13,10 @@ import { useStage } from "./hooks/useStage";
 import { createBoard } from "./utils/tetrisHelpers";
 
 function App() {
-    const [gameOver, setGameOver] = useState(false);
-    const [score, setScore] = useState(0);
-    const [linesCleared, setLinesCleared] = useState(0);
-    const [level, setLevel] = useState(1);
+    const [gameOver, setGameOver] = useState<boolean>(false);
+    const [score, setScore] = useState<number>(0);
+    const [linesCleared, setLinesCleared] = useState<number>(0);
+    const [level, setLevel] = useState<number>(1);
     const [dropTime, setDropTime] = useState(null);
 
     const { player, updatePlayerPos, resetPlayer } = usePlayer();
