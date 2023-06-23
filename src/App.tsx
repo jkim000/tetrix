@@ -64,7 +64,9 @@ function App() {
                         level={level}
                         linesRecentlyCleared={linesCleared}
                     />
-                    {gameOver && <StartButton onClick={onStartGameClick} />}
+                    {/* {gameOver && <StartButton onClick={startGame} />} */}
+                    {/* for testing only below, for reals above */}
+                    <StartButton onClick={startGame} />
                 </div>
             </main>
         </div>

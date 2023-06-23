@@ -1,10 +1,12 @@
 import { useCallback, useState } from "react";
 import { createRandomTetromino } from "../utils/tetrisHelpers";
 import { PlayerState } from "../utils/types";
+import { COL_SIZE, TETROMINOS } from "../utils/constants";
 
 export const usePlayer = () => {
     const [player, setPlayer] = useState<PlayerState>({
         pos: { x: 0, y: 0 },
+        tetromino: TETROMINOS["X"].shape,
         hasCollided: false,
     });
 
