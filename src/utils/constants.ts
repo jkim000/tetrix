@@ -74,7 +74,7 @@ export const TETROMINOS: TetrominosType = {
         shape: [
             ["T", "T", "T"],
             ["X", "T", "X"],
-            ["X", "T", "X"],
+            ["X", "X", "X"],
         ],
         color: "bg-violet-800",
         borderTLColor: "border-t-violet-600 border-l-violet-600",
