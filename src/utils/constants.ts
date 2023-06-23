@@ -1,6 +1,6 @@
 import { TetrominosType } from "./types";
 
-export const COLUMN_SIZE = 10;
+export const COL_SIZE = 10;
 export const ROW_SIZE = 20;
 
 export const TETROMINOS: TetrominosType = {

@@ -1,15 +1,16 @@
-import { COLUMN_SIZE, ROW_SIZE, TETROMINOS } from "./constants";
+import { COL_SIZE, ROW_SIZE, TETROMINOS } from "./constants";
 import { TetrominoType, StageType } from "./types";
 
 export const createBoard = (): StageType => {
     return Array.from(Array(ROW_SIZE), () =>
-        new Array(COLUMN_SIZE).fill(["X", "clear"])
+        new Array(COL_SIZE).fill(["X", "clear"])
     );
 };
 
 export const createRandomTetromino = (): TetrominoType => {
-    const tetrominos = "OIZSLJT";
-    const randomTetromino = tetrominos[Math.random() * tetrominos.length];
+    const tetrominos = ["O", "I", "Z", "S", "L", "J", "T"];
+    const randomTetromino =
+        tetrominos[Math.floor(Math.random() * tetrominos.length)];
 
     return TETROMINOS[randomTetromino];
 };

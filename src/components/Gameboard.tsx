@@ -3,21 +3,9 @@ import "./styles/GameboardStyles.css";
 
 interface GameboardProps {
     stage: string[][][];
-    gameOver: boolean;
-    onGameOver: () => void;
-    onScoreUpdate: (newScore: number) => void;
-    onLinesCleared: (newLinesCleared: number) => void;
-    onLevelUpdate: (newLevel: number) => void;
 }
 
-export const Gameboard = ({
-    stage,
-    gameOver,
-    onGameOver,
-    onScoreUpdate,
-    onLinesCleared,
-    onLevelUpdate,
-}: GameboardProps) => {
+export const Gameboard = ({ stage }: GameboardProps) => {
     return (
         <div className='gameboard-container'>
             {stage.map((row, rowIndex) =>
