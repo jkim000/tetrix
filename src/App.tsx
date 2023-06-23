@@ -12,6 +12,10 @@ import { useStage } from "./hooks/useStage";
 
 import { createBoard } from "./utils/tetrisHelpers";
 
+/**
+ * FIX: Tetromino moves twice per keydown and I don't know why
+ */
+
 function App() {
     const [gameOver, setGameOver] = useState<boolean>(false);
     const [score, setScore] = useState<number>(0);
@@ -22,26 +26,31 @@ function App() {
     const { player, updatePlayerPos, resetPlayer } = usePlayer();
     const [stage, setStage] = useStage(player);
 
-    useEffect(() => {
-        window.addEventListener("keydown", (e) => {
-            console.log(e.key);
-            handleKeydown(e.key);
-        });
-
-        return () => {
-            window.removeEventListener("keydown", (e) => {
-                handleKeydown(e.key);
-            });
-        };
-    }, []);
-
     const startGame = () => {
         // reset everything
         setStage(createBoard());
         resetPlayer();
     };
 
-    const handleKeydown = (key: string) => {
+    const moveTetrimino = (direction: 1 | -1) => {
+        updatePlayerPos({ x: direction, y: 0 });
+    };
+
+    const dropTetrimino = () => {
+        drop();
+    };
+
+    const drop = () => {
+        updatePlayerPos({ x: 0, y: 1, hasCollided: false });
+    };
+
+    const rotateTetrimino = (rotation: "clockwise" | "counterclockwise") => {};
+
+    const holdTetrimino = () => {};
+
+    const pauseGame = () => {};
+
+    const handleKeydownEvent = (key: string) => {
         if (!gameOver) {
             if (key === "ArrowLeft") moveTetrimino(-1);
             if (key === "ArrowRight") moveTetrimino(1);
@@ -54,42 +63,15 @@ function App() {
         }
     };
 
-    const moveTetrimino = (direction: 1 | -1) => {
-        updatePlayerPos(direction, 0);
-    };
-
-    const dropTetrimino = () => {
-        drop();
-    };
-
-    const drop = () => {
-        updatePlayerPos(0, 1, false);
-    };
-
-    const rotateTetrimino = (rotation: "clockwise" | "counterclockwise") => {};
-
-    const holdTetrimino = () => {};
-
-    const pauseGame = () => {};
-
-    const handleGameOver = () => {
-        setGameOver(true);
-    };
-
-    const handleScoreUpdate = (newScore: number) => {
-        setScore(newScore);
-    };
-
-    const handleLinesClearedUpdate = (newLinesCleared: number) => {
-        setLinesCleared(newLinesCleared);
-    };
-
-    const handleLevelUpdate = (newLevel: number) => {
-        setLevel(newLevel);
-    };
+    console.log("App Re-Render");
 
     return (
-        <div className='w-screen h-screen py-12 font-mono'>
+        <div
+            className='w-screen h-screen py-12 font-mono'
+            role='button'
+            tabIndex={0}
+            onKeyDown={(e) => handleKeydownEvent(e.key)}
+        >
             <h1 className='text-center text-4xl'>TETRIX</h1>
             <main className='flex flex-row justify-evenly items-start gap-12 w-full h-full px-12 py-12'>
                 <div className='w-32 h-32 border border-blue-400'>
