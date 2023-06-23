@@ -10,3 +10,9 @@ export type TetrominosType = {
 };
 
 export type StageType = string[][][];
+
+export type PlayerState = {
+    tetromino: TetrominoType["shape"];
+    pos: { x: number; y: number };
+    hasCollided: boolean;
+};
