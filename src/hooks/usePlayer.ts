@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { createRandomTetromino } from "../utils/tetrisHelpers";
-import { PlayerState } from "../utils/types";
+import { PlayerState, MovementType } from "../utils/types";
 import { COL_SIZE, TETROMINOS } from "../utils/constants";
 
 export const usePlayer = () => {
@@ -10,7 +10,7 @@ export const usePlayer = () => {
         hasCollided: false,
     });
 
-    const updatePlayerPos = (x: number, y: number, hasCollided = false) => {
+    const updatePlayerPos = ({ x, y, hasCollided }: MovementType) => {
         setPlayer((prev) => ({
             ...prev,
             pos: {
