@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import { Gameboard } from "./components/Gameboard";
-import { Scoreboard } from "./components/Scoreboard";
+// import { Scoreboard } from "./components/Scoreboard";
 import { NextPiece } from "./components/NextPiece";
 import { SavedPiece } from "./components/SavedPiece";
 import { StartButton } from "./components/StartButton";
@@ -18,16 +18,15 @@ import { createBoard } from "./utils/tetrisHelpers";
 
 function App() {
     const [gameOver, setGameOver] = useState<boolean>(false);
-    const [score, setScore] = useState<number>(0);
-    const [linesCleared, setLinesCleared] = useState<number>(0);
-    const [level, setLevel] = useState<number>(1);
-    const [dropTime, setDropTime] = useState(null);
+    // const [score, setScore] = useState<number>(0);
+    // const [linesCleared, setLinesCleared] = useState<number>(0);
+    // const [level, setLevel] = useState<number>(1);
+    // const [dropTime, setDropTime] = useState(null);
 
     const { player, updatePlayerPos, resetPlayer } = usePlayer();
     const [stage, setStage] = useStage(player);
 
     const startGame = () => {
-        // reset everything
         setStage(createBoard());
         resetPlayer();
     };
@@ -44,22 +43,22 @@ function App() {
         updatePlayerPos({ x: 0, y: 1, hasCollided: false });
     };
 
-    const rotateTetrimino = (rotation: "clockwise" | "counterclockwise") => {};
+    // const rotateTetrimino = (rotation: "clockwise" | "counterclockwise") => {};
 
-    const holdTetrimino = () => {};
+    // const holdTetrimino = () => {};
 
-    const pauseGame = () => {};
+    // const pauseGame = () => {};
 
     const handleKeydownEvent = (key: string) => {
         if (!gameOver) {
             if (key === "ArrowLeft") moveTetrimino(-1);
-            if (key === "ArrowRight") moveTetrimino(1);
-            if (key === "ArrowDown") dropTetrimino();
-            if (key === "ArrowUp") rotateTetrimino("clockwise");
-            if (key === "D") rotateTetrimino("counterclockwise");
-            if (key === "Space") drop();
-            if (key === "F") holdTetrimino();
-            if (key === "Escape") pauseGame();
+            else if (key === "ArrowRight") moveTetrimino(1);
+            else if (key === "ArrowDown") dropTetrimino();
+            // else if (key === "ArrowUp") rotateTetrimino("clockwise");
+            // else if (key === "D") rotateTetrimino("counterclockwise");
+            // else if (key === "Space") drop();
+            // else if (key === "F") holdTetrimino();
+            // else if (key === "Escape") pauseGame();
         }
     };
 
@@ -82,11 +81,11 @@ function App() {
                 </div>
                 <div className='w-48 flex flex-col gap-8 border border-purple-600'>
                     <NextPiece />
-                    <Scoreboard
+                    {/* <Scoreboard
                         score={score}
                         level={level}
                         linesRecentlyCleared={linesCleared}
-                    />
+                    /> */}
                     {/* {gameOver && <StartButton onClick={startGame} />} */}
                     {/* for testing only below, for reals above */}
                     <StartButton onClick={startGame} />
